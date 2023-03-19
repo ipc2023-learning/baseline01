@@ -1,0 +1,185 @@
+generate_optimal_plan {false} [false]
+response {coverage} [coverage]
+timeout [1, 600] [60]il
+use_bound {false} [false]
+used_time {0} [0]
+
+max_number_of_searches {1} [1]
+
+lm_heuristic_no_orders {false, true} [false]
+ff_heuristic_pref_ops {false, true} [true]
+add_heuristic_pref_ops {false, true} [true]
+lm_heuristic_cost_type {0, 1, 2} [2]
+cg_heuristic_pref_ops {false, true} [true]
+search_0_search_reopen {false, true} [false]
+blind_heuristic_enabled {false, true} [false]
+lm_heuristic_type {lm_rhw, lm_zg, lm_hm, lm_exhaust, lm_rhw_hm1} [lm_rhw]
+lm_heuristic_only_causal_landmarks {false, true} [false]
+lm_heuristic_pref_ops {false, true} [true]
+search_0_eager_pathmax {false, true} [false]
+cg_heuristic_cost_type {0, 1, 2} [2]
+goalcount_heuristic_enabled {false, true} [false]
+hmax_heuristic_enabled {false, true} [false]
+goalcount_heuristic_cost_type {0, 1, 2} [2]
+lm_heuristic_hm_m {1, 2, 3} [1]
+cea_heuristic_pref_ops {false, true} [true]
+hm_heuristic_enabled {false, true} [false]
+search_0_type {none, ehc, eager, lazy} [lazy]
+lm_heuristic_disjunctive_landmarks {false, true} [true]
+lm_heuristic_enabled {false, true} [false]
+search_0_search_w {1, 1.125, 1.25, 1.5, 2, 3, 5, 7, 10, -1} [10]
+cg_heuristic_enabled {false, true} [false]
+lm_heuristic_conjunctive_landmarks {false, true} [true]
+hm_heuristic_m {1, 2, 3} [2]
+cea_heuristic_enabled {false, true} [false]
+search_0_ehc_preferred_usage {0, 1} [0]
+search_0_search_boost [0, 5000] [2000]i
+add_heuristic_cost_type {0, 1, 2} [2]
+ff_heuristic_cost_type {0, 1, 2} [1]
+add_heuristic_enabled {false, true} [false]
+lmcut_heuristic_enabled {false, true} [false]
+lm_heuristic_reasonable_orders {false, true} [true]
+goalcount_heuristic_pref_ops {false, true} [true]
+lmcut_heuristic_cost_type {0, 1, 2} [0]
+search_0_cost_type {0, 1} [1]
+cea_heuristic_cost_type {0, 1, 2} [2]
+search_0_search_open_list_tb {false, true} [false]
+lm_ff_synergy {false, true} [true]
+ff_heuristic_enabled {false, true} [true]
+lm_heuristic_admissible {false, true} [false]
+
+Conditionals:
+lm_heuristic_no_orders | lm_heuristic_enabled in {true}
+ff_heuristic_pref_ops | ff_heuristic_enabled in {true}
+lm_heuristic_cost_type | lm_heuristic_enabled in {true}
+add_heuristic_pref_ops | add_heuristic_enabled in {true}
+cg_heuristic_pref_ops | cg_heuristic_enabled in {true}
+search_0_search_reopen | search_0_type in {eager,lazy}
+lm_heuristic_only_causal_landmarks | lm_heuristic_type in {lm_rhw,lm_exhaust,lm_rhw_hm1}
+lm_heuristic_only_causal_landmarks | lm_heuristic_enabled in {true}
+lm_heuristic_type | lm_heuristic_enabled in {true}
+lm_heuristic_pref_ops | lm_heuristic_admissible in {false}
+cg_heuristic_cost_type | cg_heuristic_enabled in {true}
+search_0_eager_pathmax | search_0_type in {eager}
+lm_heuristic_hm_m | lm_heuristic_type in {lm_hm}
+lm_heuristic_hm_m | lm_heuristic_enabled in {true}
+goalcount_heuristic_cost_type | goalcount_heuristic_enabled in {true}
+cea_heuristic_pref_ops | cea_heuristic_enabled in {true}
+lm_heuristic_disjunctive_landmarks | lm_heuristic_type in {lm_rhw,lm_rhw_hm1}
+lm_heuristic_disjunctive_landmarks | lm_heuristic_enabled in {true}
+search_0_search_w | search_0_type in {eager,lazy}
+lm_heuristic_conjunctive_landmarks | lm_heuristic_type in {lm_hm}
+lm_heuristic_conjunctive_landmarks | lm_heuristic_enabled in {true}
+hm_heuristic_m | hm_heuristic_enabled in {true}
+search_0_ehc_preferred_usage | search_0_type in {ehc}
+search_0_search_boost | search_0_type in {eager,lazy}
+add_heuristic_cost_type | add_heuristic_enabled in {true}
+ff_heuristic_cost_type | ff_heuristic_enabled in {true}
+lm_heuristic_reasonable_orders | lm_heuristic_admissible in {false}
+goalcount_heuristic_pref_ops | goalcount_heuristic_enabled in {true}
+search_0_cost_type | search_0_type in {ehc,eager,lazy}
+lmcut_heuristic_cost_type | lmcut_heuristic_enabled in {true}
+cea_heuristic_cost_type | cea_heuristic_enabled in {true}
+lm_ff_synergy | lm_heuristic_enabled in {true}
+lm_ff_synergy | ff_heuristic_enabled in {true}
+search_0_search_open_list_tb | search_0_type in {eager,lazy}
+search_0_search_open_list_tb | search_0_search_w in {1,1.125,1.25,1.5,2,3,5,7,10}
+lm_heuristic_admissible | lm_heuristic_enabled in {true}
+
+
+Forbidden:
+{hm_heuristic_enabled=true,search_0_type=ehc,cg_heuristic_enabled=true}
+
+{search_0_type=ehc,cg_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{search_0_type=ehc,cg_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_0_type=ehc,cg_heuristic_enabled=true,goalcount_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_0_type=ehc,cea_heuristic_enabled=true}
+
+{search_0_type=ehc,hmax_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_0_type=ehc,lm_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_0_type=ehc,goalcount_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_0_type=ehc,cea_heuristic_enabled=true}
+
+{search_0_type=ehc,cg_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_0_type=ehc,cea_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_0_type=ehc}
+
+{blind_heuristic_enabled=true,search_0_type=ehc,hmax_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_0_type=ehc,lm_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,blind_heuristic_enabled=true,search_0_type=ehc}
+
+{blind_heuristic_enabled=true,search_0_type=ehc,goalcount_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_0_type=ehc,ff_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_0_type=ehc,cg_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_0_type=ehc,cea_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_0_type=ehc}
+
+{add_heuristic_enabled=true,search_0_type=ehc,lm_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_0_type=ehc,hmax_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,add_heuristic_enabled=true,search_0_type=ehc}
+
+{add_heuristic_enabled=true,search_0_type=ehc,goalcount_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_0_type=ehc,ff_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_0_type=ehc,cg_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_0_type=ehc,cea_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,add_heuristic_enabled=true,search_0_type=ehc}
+
+{hm_heuristic_enabled=false,blind_heuristic_enabled=false,add_heuristic_enabled=false,lmcut_heuristic_enabled=false,lm_heuristic_enabled=false,cg_heuristic_enabled=false,hmax_heuristic_enabled=false,goalcount_heuristic_enabled=false,cea_heuristic_enabled=false,ff_heuristic_enabled=false}
+
+{search_0_type=none}
+
+{lmcut_heuristic_enabled=true,search_0_type=ehc,hmax_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_0_type=ehc,lm_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_0_type=ehc,lm_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_0_type=ehc}
+
+{search_0_type=ehc,lm_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_0_type=ehc,goalcount_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_0_type=ehc,hmax_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,hmax_heuristic_enabled=true,hm_heuristic_m=1}
+
+{hm_heuristic_enabled=true,search_0_type=ehc,goalcount_heuristic_enabled=true}
+
+{search_0_type=ehc,lm_heuristic_enabled=true,goalcount_heuristic_enabled=true}
+
+{search_0_type=ehc,hmax_heuristic_enabled=true,goalcount_heuristic_enabled=true}
+
+{search_0_type=ehc,hmax_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_0_type=ehc,ff_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_0_type=ehc,ff_heuristic_enabled=true}
+
+{search_0_type=ehc,lm_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_0_type=ehc,cg_heuristic_enabled=true}
+
+{search_0_type=ehc,lm_heuristic_enabled=true,cg_heuristic_enabled=true}
+
+{search_0_type=ehc,goalcount_heuristic_enabled=true,ff_heuristic_enabled=true}

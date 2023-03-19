@@ -1,0 +1,95 @@
+generate_optimal_plan {true} [true]
+response {coverage} [coverage]
+timeout [1, 600] [60]il
+
+a_star_use_mpd {false, true} [true]
+a_star_use_pathmax {false, true} [false]
+
+blind_heuristic_enabled {false, true} [false]
+
+hm_heuristic_enabled {false, true} [false]
+hm_heuristic_m {1, 2, 3} [2]
+
+hmax_heuristic_enabled {false, true} [false]
+
+lm_heuristic_enabled {false, true} [true]
+lm_heuristic_no_orders {false, true} [false]
+lm_heuristic_only_causal_landmarks {false, true} [false]
+lm_heuristic_type {lm_rhw, lm_zg, lm_hm, lm_exhaust, lm_rhw_hm1} [lm_rhw]
+lm_heuristic_disjunctive_landmarks {false, true} [true]
+lm_heuristic_conjunctive_landmarks {false, true} [true]
+lm_heuristic_hm_m {1, 2, 3} [1]
+
+lmcut_heuristic_enabled {false, true} [true]
+
+# merge_and_shrink(merge_strategy=MERGE_LINEAR_CG_GOAL_LEVEL,
+#                  shrink_strategy=f-preserving, reduce_labels=true,
+#                  expensive_statistics=false, cost_type=NORMAL)
+mas_heuristic_enabled {false, true} [false]
+# MERGE_DFP is left out, because it is not implemented yet.
+mas_heuristic_merge_strategy {MERGE_LINEAR_CG_GOAL_LEVEL, MERGE_LINEAR_GOAL_CG_LEVEL, MERGE_LINEAR_LEVEL, MERGE_LINEAR_REVERSE_LEVEL} [MERGE_LINEAR_CG_GOAL_LEVEL]
+mas_heuristic_shrink_strategy {bisimulation, fh, random} [fh]
+mas_heuristic_reduce_labels {true} [true]
+
+# shrink_bisimulation(max_states=-1, max_states_before_merge=-1, greedy=NOT_GREEDY,
+#                     threshold=-1, group_by_h=false, at_limit=RETURN)
+mas_heuristic_shrink_bisimulation_max_states [100, 2147483647] [50000]il
+mas_heuristic_shrink_bisimulation_max_states_before_merge {-1} [-1]
+mas_heuristic_shrink_bisimulation_greedy {false, true} [false]
+#mas_heuristic_shrink_bisimulation_threshold [1, 2147483647] [50000]il
+# we use the threshold parameter as a scale-parameter depending on max-states, because
+# threshold should never be lower than max-states
+mas_heuristic_shrink_bisimulation_threshold [0, 100] [100]i
+mas_heuristic_shrink_bisimulation_group_by_h {false, true} [false]
+mas_heuristic_shrink_bisimulation_at_limit {RETURN, USE_UP} [RETURN]
+
+# shrink_fh(max_states=-1, max_states_before_merge=-1, shrink_f=HIGH, shrink_h=LOW)
+mas_heuristic_shrink_fh_max_states [100, 2147483647] [50000]il
+mas_heuristic_shrink_fh_max_states_before_merge {-1} [-1]
+mas_heuristic_shrink_fh_shrink_f {HIGH, LOW} [HIGH]
+mas_heuristic_shrink_fh_shrink_h {HIGH, LOW} [LOW]
+
+# shrink_random(max_states=-1, max_states_before_merge=-1)
+# Make the parameter space smaller
+mas_heuristic_shrink_random_max_states {50000} [50000]
+mas_heuristic_shrink_random_max_states_before_merge {-1} [-1]
+
+
+Conditionals:
+lm_heuristic_no_orders | lm_heuristic_enabled in {true}
+lm_heuristic_disjunctive_landmarks | lm_heuristic_type in {lm_rhw,lm_rhw_hm1}
+lm_heuristic_disjunctive_landmarks | lm_heuristic_enabled in {true}
+lm_heuristic_conjunctive_landmarks | lm_heuristic_type in {lm_hm}
+lm_heuristic_conjunctive_landmarks | lm_heuristic_enabled in {true}
+hm_heuristic_m | hm_heuristic_enabled in {true}
+a_star_use_mpd | lm_heuristic_enabled in {true}
+lm_heuristic_only_causal_landmarks | lm_heuristic_type in {lm_rhw,lm_exhaust,lm_rhw_hm1}
+lm_heuristic_only_causal_landmarks | lm_heuristic_enabled in {true}
+lm_heuristic_type | lm_heuristic_enabled in {true}
+lm_heuristic_hm_m | lm_heuristic_type in {lm_hm}
+lm_heuristic_hm_m | lm_heuristic_enabled in {true}
+
+mas_heuristic_merge_strategy | mas_heuristic_enabled in {true}
+mas_heuristic_shrink_strategy | mas_heuristic_enabled in {true}
+mas_heuristic_reduce_labels | mas_heuristic_enabled in {true}
+
+mas_heuristic_shrink_bisimulation_max_states | mas_heuristic_shrink_strategy in {bisimulation}
+mas_heuristic_shrink_bisimulation_max_states_before_merge | mas_heuristic_shrink_strategy in {bisimulation}
+mas_heuristic_shrink_bisimulation_greedy | mas_heuristic_shrink_strategy in {bisimulation}
+mas_heuristic_shrink_bisimulation_threshold | mas_heuristic_shrink_strategy in {bisimulation}
+mas_heuristic_shrink_bisimulation_group_by_h | mas_heuristic_shrink_strategy in {bisimulation}
+mas_heuristic_shrink_bisimulation_at_limit | mas_heuristic_shrink_strategy in {bisimulation}
+
+mas_heuristic_shrink_fh_max_states | mas_heuristic_shrink_strategy in {fh}
+mas_heuristic_shrink_fh_max_states_before_merge | mas_heuristic_shrink_strategy in {fh}
+mas_heuristic_shrink_fh_shrink_f | mas_heuristic_shrink_strategy in {fh}
+mas_heuristic_shrink_fh_shrink_h | mas_heuristic_shrink_strategy in {fh}
+
+mas_heuristic_shrink_random_max_states | mas_heuristic_shrink_strategy in {random}
+mas_heuristic_shrink_random_max_states_before_merge | mas_heuristic_shrink_strategy in {random}
+
+
+Forbidden:
+{hm_heuristic_enabled=true,hmax_heuristic_enabled=true,hm_heuristic_m=1}
+
+{hm_heuristic_enabled=false,blind_heuristic_enabled=false,lmcut_heuristic_enabled=false,lm_heuristic_enabled=false,hmax_heuristic_enabled=false,mas_heuristic_enabled=false}

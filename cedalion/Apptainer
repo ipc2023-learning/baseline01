@@ -1,0 +1,38 @@
+# Stage 1: Compile the planner
+Bootstrap: docker
+From: ubuntu:14.04
+Stage: build
+
+%files
+    .
+
+%post
+    apt-get update
+    apt-get -y install --no-install-recommends g++ g++-multilib make libboost-dev
+
+    cd src
+    ./build_all -j8
+    strip --strip-all /src/search/downward-release
+
+
+# Stage 2: Run the planner
+Bootstrap: docker
+From: ubuntu:14.04
+Stage: run
+
+# Copy planner binary and required files from Stage 1.
+%files from build
+    src/plan
+    src/preprocess/preprocess
+    src/search/downward
+    src/search/downward-release
+    src/translate
+
+%post
+    apt-get update
+    apt-get -y install --no-install-recommends gawk pypy time
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+
+%runscript
+    /src/plan "$@"

@@ -1,0 +1,32 @@
+Requirements
+============
+
+STRIPS:
+    appn-strips (test32 and test35 removed since they had conditional effects)
+    ged2-* (GED split multi-step relational formulation)
+    ged3-* (GED multi-step relational formulation)
+    (all others)
+
+Conditional effects, no axioms:
+    briefcaseworld
+    fsc-*
+    gedp-ds2ndp (GED single-step positional formulation, ds2dn tasks < 2MB)
+    miconic-simpleadl
+    t0-*
+    t0-grid-lookandgrab: Only the first task can be translated in 30min and 4GB
+
+Conditional effects and axioms:
+    appn-adl
+    airport-adl
+    assembly
+    miconic-fulladl
+    openstacks
+    openstacks-opt08-adl
+    optical-telegraphs
+    philosophers
+    psr-large
+    psr-middle
+    trucks
+
+Conditional effects and *negated axioms* (unsupported by translator):
+    ged1-* (GED single-step relational formulation)

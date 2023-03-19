@@ -1,0 +1,20 @@
+#! /bin/bash
+
+set -ue
+
+if [[ $# != 4 && $# != 5 ]]; then
+    echo "usage: $(basename "$0") PLANNER_NAME DOMAIN PROBLEM PLAN_FILE [PORTFOLIO]" 1>&2
+    exit 1
+fi
+
+BASEDIR="$(dirname "$0")"
+if [[ $# == 4 ]]; then
+    "$BASEDIR/plan" "$2" "$3" ipc "$1" --plan-file "$4"
+elif [[ -e "$5" ]]; then
+    TMP_PORTFOLIO="tmp-portfolio.py"
+    cp "$5" "$BASEDIR/search/$TMP_PORTFOLIO"
+    "$BASEDIR/plan" "$2" "$3" --portfolio "$TMP_PORTFOLIO" --plan-file "$4"
+else
+    echo "portfolio could not be found"
+    exit 1
+fi

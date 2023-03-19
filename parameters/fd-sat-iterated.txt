@@ -1,0 +1,610 @@
+generate_optimal_plan {false} [false]
+response {coverage} [coverage]
+timeout [1, 600] [60]il
+use_bound {false} [false]
+used_time {0} [0]
+
+max_number_of_searches {5} [5]
+
+ff_heuristic_pref_ops {false, true} [true]
+search_4_type {none, ehc, eager, lazy} [eager]
+add_heuristic_pref_ops {false, true} [false]
+search_2_eager_pathmax {false, true} [false]
+search_2_search_reopen {false, true} [false]
+search_2_search_boost {0, 100, 200, 500, 1000, 2000, 5000} [0]
+search_0_search_reopen {false, true} [false]
+search_2_search_open_list_tb {false, true} [false]
+search_4_eager_pathmax {false, true} [true]
+search_3_search_w {1, 1.125, 1.25, 1.5, 2, 3, 5, 7, 10, -1} [-1]
+search_1_ehc_preferred_usage {0, 1} [0]
+search_0_eager_pathmax {false, true} [false]
+cg_heuristic_cost_type {0, 1, 2} [2]
+goalcount_heuristic_enabled {false, true} [true]
+search_3_cost_type {0, 1} [0]
+lm_heuristic_hm_m {1, 2, 3} [1]
+goalcount_heuristic_cost_type {0, 1, 2} [0]
+search_2_ehc_preferred_usage {0, 1} [0]
+search_3_search_open_list_tb {false, true} [false]
+search_1_search_open_list_tb {false, true} [true]
+cea_heuristic_pref_ops {false, true} [true]
+search_4_ehc_preferred_usage {0, 1} [0]
+search_2_type {none, ehc, eager, lazy} [none]
+search_4_search_reopen {false, true} [true]
+lm_heuristic_conjunctive_landmarks {false, true} [true]
+search_3_search_boost {0, 100, 200, 500, 1000, 2000, 5000} [0]
+search_0_ehc_preferred_usage {0, 1} [0]
+search_0_search_boost {0, 100, 200, 500, 1000, 2000, 5000} [1000]
+search_1_cost_type {0, 1} [0]
+lmcut_heuristic_enabled {false, true} [false]
+search_3_type {none, ehc, eager, lazy} [none]
+lm_heuristic_reasonable_orders {false, true} [true]
+goalcount_heuristic_pref_ops {false, true} [true]
+search_3_eager_pathmax {false, true} [false]
+search_0_cost_type {0, 1} [1]
+search_3_ehc_preferred_usage {0, 1} [0]
+cea_heuristic_cost_type {0, 1, 2} [0]
+lm_ff_synergy {false, true} [true]
+ff_heuristic_enabled {false, true} [false]
+lm_heuristic_no_orders {false, true} [false]
+lm_heuristic_cost_type {0, 1, 2} [2]
+search_1_search_boost {0, 100, 200, 500, 1000, 2000, 5000} [5000]
+cg_heuristic_pref_ops {false, true} [false]
+search_4_search_boost {0, 100, 200, 500, 1000, 2000, 5000} [500]
+blind_heuristic_enabled {false, true} [false]
+search_4_cost_type {0, 1} [0]
+lm_heuristic_type {lm_rhw, lm_zg, lm_hm, lm_exhaust, lm_rhw_hm1} [lm_rhw]
+lm_heuristic_only_causal_landmarks {false, true} [false]
+lm_heuristic_pref_ops {false, true} [true]
+search_1_search_reopen {false, true} [false]
+hmax_heuristic_enabled {false, true} [false]
+search_4_search_w {1, 1.125, 1.25, 1.5, 2, 3, 5, 7, 10, -1} [10]
+hm_heuristic_enabled {false, true} [false]
+search_0_type {none, ehc, eager, lazy} [lazy]
+lm_heuristic_disjunctive_landmarks {false, true} [true]
+search_3_search_reopen {false, true} [false]
+search_0_search_w {1, 1.125, 1.25, 1.5, 2, 3, 5, 7, 10, -1} [7]
+lm_heuristic_enabled {false, true} [false]
+cg_heuristic_enabled {false, true} [true]
+search_1_eager_pathmax {false, true} [false]
+search_1_type {none, ehc, eager, lazy} [lazy]
+search_4_search_open_list_tb {false, true} [true]
+hm_heuristic_m {1, 2, 3} [2]
+cea_heuristic_enabled {false, true} [true]
+search_2_cost_type {0, 1} [0]
+add_heuristic_cost_type {0, 1, 2} [0]
+search_1_search_w {1, 1.125, 1.25, 1.5, 2, 3, 5, 7, 10, -1} [3]
+ff_heuristic_cost_type {0, 1, 2} [2]
+add_heuristic_enabled {false, true} [true]
+lmcut_heuristic_cost_type {0, 1, 2} [0]
+search_0_search_open_list_tb {false, true} [false]
+search_2_search_w {1, 1.125, 1.25, 1.5, 2, 3, 5, 7, 10, -1} [-1]
+lm_heuristic_admissible {false, true} [false]
+
+Conditionals:
+ff_heuristic_pref_ops | ff_heuristic_enabled in {true}
+add_heuristic_pref_ops | add_heuristic_enabled in {true}
+search_2_search_reopen | search_2_type in {eager,lazy}
+search_2_eager_pathmax | search_2_type in {eager}
+search_2_search_boost | search_2_type in {eager,lazy}
+search_0_search_reopen | search_0_type in {eager,lazy}
+search_2_search_open_list_tb | search_2_type in {eager,lazy}
+search_2_search_open_list_tb | search_2_search_w in {1,1.125,1.25,1.5,2,3,5,7,10}
+search_4_eager_pathmax | search_4_type in {eager}
+search_3_search_w | search_3_type in {eager,lazy}
+search_1_ehc_preferred_usage | search_1_type in {ehc}
+cg_heuristic_cost_type | cg_heuristic_enabled in {true}
+search_0_eager_pathmax | search_0_type in {eager}
+search_3_cost_type | search_3_type in {ehc,eager,lazy}
+lm_heuristic_hm_m | lm_heuristic_enabled in {true}
+lm_heuristic_hm_m | lm_heuristic_type in {lm_hm}
+goalcount_heuristic_cost_type | goalcount_heuristic_enabled in {true}
+search_2_ehc_preferred_usage | search_2_type in {ehc}
+search_3_search_open_list_tb | search_3_search_w in {1,1.125,1.25,1.5,2,3,5,7,10}
+search_3_search_open_list_tb | search_3_type in {eager,lazy}
+search_1_search_open_list_tb | search_1_search_w in {1,1.125,1.25,1.5,2,3,5,7,10}
+search_1_search_open_list_tb | search_1_type in {eager,lazy}
+cea_heuristic_pref_ops | cea_heuristic_enabled in {true}
+search_4_ehc_preferred_usage | search_4_type in {ehc}
+search_4_search_reopen | search_4_type in {eager,lazy}
+lm_heuristic_conjunctive_landmarks | lm_heuristic_enabled in {true}
+lm_heuristic_conjunctive_landmarks | lm_heuristic_type in {lm_hm}
+search_3_search_boost | search_3_type in {eager,lazy}
+search_0_ehc_preferred_usage | search_0_type in {ehc}
+search_0_search_boost | search_0_type in {eager,lazy}
+search_1_cost_type | search_1_type in {ehc,eager,lazy}
+lm_heuristic_reasonable_orders | lm_heuristic_admissible in {false}
+goalcount_heuristic_pref_ops | goalcount_heuristic_enabled in {true}
+search_3_eager_pathmax | search_3_type in {eager}
+search_3_ehc_preferred_usage | search_3_type in {ehc}
+search_0_cost_type | search_0_type in {ehc,eager,lazy}
+cea_heuristic_cost_type | cea_heuristic_enabled in {true}
+lm_ff_synergy | lm_heuristic_enabled in {true}
+lm_ff_synergy | ff_heuristic_enabled in {true}
+lm_heuristic_no_orders | lm_heuristic_enabled in {true}
+lm_heuristic_cost_type | lm_heuristic_enabled in {true}
+search_1_search_boost | search_1_type in {eager,lazy}
+cg_heuristic_pref_ops | cg_heuristic_enabled in {true}
+search_4_search_boost | search_4_type in {eager,lazy}
+search_4_cost_type | search_4_type in {ehc,eager,lazy}
+lm_heuristic_only_causal_landmarks | lm_heuristic_enabled in {true}
+lm_heuristic_only_causal_landmarks | lm_heuristic_type in {lm_rhw,lm_exhaust,lm_rhw_hm1}
+lm_heuristic_type | lm_heuristic_enabled in {true}
+lm_heuristic_pref_ops | lm_heuristic_admissible in {false}
+search_1_search_reopen | search_1_type in {eager,lazy}
+search_4_search_w | search_4_type in {eager,lazy}
+search_3_search_reopen | search_3_type in {eager,lazy}
+lm_heuristic_disjunctive_landmarks | lm_heuristic_enabled in {true}
+lm_heuristic_disjunctive_landmarks | lm_heuristic_type in {lm_rhw,lm_rhw_hm1}
+search_0_search_w | search_0_type in {eager,lazy}
+search_4_search_open_list_tb | search_4_type in {eager,lazy}
+search_4_search_open_list_tb | search_4_search_w in {1,1.125,1.25,1.5,2,3,5,7,10}
+search_1_eager_pathmax | search_1_type in {eager}
+hm_heuristic_m | hm_heuristic_enabled in {true}
+search_2_cost_type | search_2_type in {ehc,eager,lazy}
+search_1_search_w | search_1_type in {eager,lazy}
+add_heuristic_cost_type | add_heuristic_enabled in {true}
+ff_heuristic_cost_type | ff_heuristic_enabled in {true}
+lmcut_heuristic_cost_type | lmcut_heuristic_enabled in {true}
+search_0_search_open_list_tb | search_0_type in {eager,lazy}
+search_0_search_open_list_tb | search_0_search_w in {1,1.125,1.25,1.5,2,3,5,7,10}
+search_2_search_w | search_2_type in {eager,lazy}
+lm_heuristic_admissible | lm_heuristic_enabled in {true}
+
+
+Forbidden:
+{search_3_type=ehc,lmcut_heuristic_enabled=true,lm_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,lm_heuristic_enabled=true,search_2_type=ehc}
+
+{lmcut_heuristic_enabled=true,search_4_type=ehc,lm_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,lm_heuristic_enabled=true,search_1_type=ehc}
+
+{lmcut_heuristic_enabled=true,search_0_type=ehc,lm_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_4_type=ehc,hmax_heuristic_enabled=true}
+
+{search_3_type=none,search_4_type=none,search_0_type=none,search_2_type=none,search_1_type=none}
+
+{hm_heuristic_enabled=true,add_heuristic_enabled=true,search_4_type=ehc}
+
+{add_heuristic_enabled=true,search_0_type=ehc,hmax_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,add_heuristic_enabled=true,search_2_type=ehc}
+
+{hm_heuristic_enabled=true,add_heuristic_enabled=true,search_3_type=ehc}
+
+{hm_heuristic_enabled=true,add_heuristic_enabled=true,search_0_type=ehc}
+
+{hm_heuristic_enabled=true,add_heuristic_enabled=true,search_1_type=ehc}
+
+{add_heuristic_enabled=true,search_3_type=ehc,goalcount_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_4_type=ehc,goalcount_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_1_type=ehc,goalcount_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_2_type=ehc,goalcount_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_4_type=ehc,ff_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_0_type=ehc,goalcount_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_2_type=ehc,ff_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_3_type=ehc,ff_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_0_type=ehc,ff_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_1_type=ehc,ff_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_4_type=ehc,cg_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_3_type=ehc,cg_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_2_type=ehc,cg_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,cg_heuristic_enabled=true,search_1_type=ehc}
+
+{add_heuristic_enabled=true,search_0_type=ehc,cg_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_4_type=ehc,cea_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_3_type=ehc,cea_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_2_type=ehc,cea_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_1_type=ehc,cea_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_0_type=ehc,cea_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,blind_heuristic_enabled=true,search_4_type=ehc}
+
+{add_heuristic_enabled=true,blind_heuristic_enabled=true,search_3_type=ehc}
+
+{add_heuristic_enabled=true,blind_heuristic_enabled=true,search_2_type=ehc}
+
+{add_heuristic_enabled=true,blind_heuristic_enabled=true,search_1_type=ehc}
+
+{add_heuristic_enabled=true,blind_heuristic_enabled=true,search_0_type=ehc}
+
+{hm_heuristic_enabled=false,add_heuristic_enabled=false,blind_heuristic_enabled=false,lmcut_heuristic_enabled=false,lm_heuristic_enabled=false,cg_heuristic_enabled=false,goalcount_heuristic_enabled=false,hmax_heuristic_enabled=false,cea_heuristic_enabled=false,ff_heuristic_enabled=false}
+
+{blind_heuristic_enabled=true,search_4_type=ehc,cg_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_0_type=ehc,ff_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_1_type=ehc,ff_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_2_type=ehc,ff_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_0_type=ehc,cg_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,cg_heuristic_enabled=true,search_1_type=ehc}
+
+{blind_heuristic_enabled=true,search_2_type=ehc,cg_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_3_type=ehc,cg_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_1_type=ehc,cea_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_2_type=ehc,cea_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_3_type=ehc,cea_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_4_type=ehc,cea_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_0_type=ehc,cea_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_4_type=ehc}
+
+{add_heuristic_enabled=true,search_3_type=ehc,lmcut_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_0_type=ehc}
+
+{add_heuristic_enabled=true,search_4_type=ehc,lm_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_2_type=ehc}
+
+{add_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_1_type=ehc}
+
+{add_heuristic_enabled=true,lm_heuristic_enabled=true,search_1_type=ehc}
+
+{add_heuristic_enabled=true,search_0_type=ehc,lm_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_3_type=ehc,lm_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,lm_heuristic_enabled=true,search_2_type=ehc}
+
+{add_heuristic_enabled=true,search_2_type=ehc,hmax_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_1_type=ehc,hmax_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_4_type=ehc,hmax_heuristic_enabled=true}
+
+{add_heuristic_enabled=true,search_3_type=ehc,hmax_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_4_type=ehc}
+
+{blind_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_2_type=ehc}
+
+{blind_heuristic_enabled=true,search_3_type=ehc,lmcut_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,lm_heuristic_enabled=true,search_1_type=ehc}
+
+{blind_heuristic_enabled=true,lm_heuristic_enabled=true,search_2_type=ehc}
+
+{blind_heuristic_enabled=true,search_4_type=ehc,hmax_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_0_type=ehc,lm_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_0_type=ehc}
+
+{blind_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_1_type=ehc}
+
+{blind_heuristic_enabled=true,search_3_type=ehc,lm_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_4_type=ehc,lm_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,blind_heuristic_enabled=true,search_4_type=ehc}
+
+{hm_heuristic_enabled=true,blind_heuristic_enabled=true,search_3_type=ehc}
+
+{hm_heuristic_enabled=true,blind_heuristic_enabled=true,search_2_type=ehc}
+
+{hm_heuristic_enabled=true,blind_heuristic_enabled=true,search_1_type=ehc}
+
+{blind_heuristic_enabled=true,search_3_type=ehc,hmax_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_2_type=ehc,hmax_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_1_type=ehc,hmax_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_0_type=ehc,hmax_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_1_type=ehc,goalcount_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_0_type=ehc,goalcount_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_4_type=ehc,ff_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_3_type=ehc,ff_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,blind_heuristic_enabled=true,search_0_type=ehc}
+
+{blind_heuristic_enabled=true,search_4_type=ehc,goalcount_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_3_type=ehc,goalcount_heuristic_enabled=true}
+
+{blind_heuristic_enabled=true,search_2_type=ehc,goalcount_heuristic_enabled=true}
+
+{search_4_type=ehc,hmax_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_0_type=ehc,lm_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{lm_heuristic_enabled=true,search_1_type=ehc,cea_heuristic_enabled=true}
+
+{lm_heuristic_enabled=true,search_2_type=ehc,cea_heuristic_enabled=true}
+
+{search_3_type=ehc,lm_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_4_type=ehc,lm_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_0_type=ehc,cea_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_1_type=ehc,cea_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_1_type=ehc,cea_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_2_type=ehc,cea_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_3_type=ehc,cea_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_4_type=ehc,cea_heuristic_enabled=true}
+
+{search_0_type=ehc,hmax_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_1_type=ehc,hmax_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_2_type=ehc,hmax_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_3_type=ehc,hmax_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_4_type=ehc,cea_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_3_type=ehc,cea_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_1_type=ehc,goalcount_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_0_type=ehc,goalcount_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_3_type=ehc,goalcount_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_2_type=ehc,goalcount_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_0_type=ehc,cea_heuristic_enabled=true}
+
+{search_4_type=ehc,goalcount_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{cg_heuristic_enabled=true,search_1_type=ehc,cea_heuristic_enabled=true}
+
+{search_0_type=ehc,cg_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_3_type=ehc,cg_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_2_type=ehc,cg_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_0_type=ehc,cea_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_4_type=ehc,cg_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{search_2_type=ehc,cea_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_1_type=ehc,cea_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_0_type=ehc,cg_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_4_type=ehc,cg_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_3_type=ehc,cg_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_2_type=ehc,cg_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,cg_heuristic_enabled=true,search_1_type=ehc}
+
+{hm_heuristic_enabled=true,search_0_type=ehc,cg_heuristic_enabled=true}
+
+{search_4_type=ehc,cg_heuristic_enabled=true,goalcount_heuristic_enabled=true}
+
+{search_3_type=ehc,cg_heuristic_enabled=true,goalcount_heuristic_enabled=true}
+
+{search_3_type=ehc,lm_heuristic_enabled=true,cg_heuristic_enabled=true}
+
+{lm_heuristic_enabled=true,search_2_type=ehc,cg_heuristic_enabled=true}
+
+{lm_heuristic_enabled=true,cg_heuristic_enabled=true,search_1_type=ehc}
+
+{search_0_type=ehc,lm_heuristic_enabled=true,cg_heuristic_enabled=true}
+
+{search_4_type=ehc,cg_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{search_3_type=ehc,cg_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{search_2_type=ehc,cg_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{cg_heuristic_enabled=true,search_1_type=ehc,hmax_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_4_type=ehc,cea_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_2_type=ehc,cea_heuristic_enabled=true}
+
+{search_3_type=ehc,lmcut_heuristic_enabled=true,cea_heuristic_enabled=true}
+
+{cg_heuristic_enabled=true,search_1_type=ehc,goalcount_heuristic_enabled=true}
+
+{search_2_type=ehc,cg_heuristic_enabled=true,goalcount_heuristic_enabled=true}
+
+{search_4_type=ehc,cg_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_0_type=ehc,cg_heuristic_enabled=true,goalcount_heuristic_enabled=true}
+
+{search_2_type=ehc,cg_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_3_type=ehc,cg_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_0_type=ehc,cg_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{cg_heuristic_enabled=true,search_1_type=ehc,ff_heuristic_enabled=true}
+
+{search_0_type=ehc,hmax_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_4_type=ehc,ff_heuristic_enabled=true}
+
+{search_2_type=ehc,hmax_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_1_type=ehc,hmax_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_1_type=ehc,ff_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_0_type=ehc,ff_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_3_type=ehc,ff_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_2_type=ehc,ff_heuristic_enabled=true}
+
+{search_3_type=ehc,lm_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{lm_heuristic_enabled=true,search_2_type=ehc,ff_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_0_type=ehc,ff_heuristic_enabled=true}
+
+{search_4_type=ehc,lm_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_4_type=ehc,hmax_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_3_type=ehc,hmax_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{lm_heuristic_enabled=true,search_1_type=ehc,ff_heuristic_enabled=true}
+
+{search_0_type=ehc,lm_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_3_type=ehc,lmcut_heuristic_enabled=true,cg_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_4_type=ehc,cg_heuristic_enabled=true}
+
+{search_4_type=ehc,lm_heuristic_enabled=true,cg_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_0_type=ehc,cg_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,cg_heuristic_enabled=true,search_1_type=ehc}
+
+{lmcut_heuristic_enabled=true,search_2_type=ehc,cg_heuristic_enabled=true}
+
+{search_1_type=ehc,goalcount_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_2_type=ehc,goalcount_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_3_type=ehc,goalcount_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_4_type=ehc,goalcount_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_0_type=ehc,goalcount_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{search_0_type=ehc,lm_heuristic_enabled=true,goalcount_heuristic_enabled=true}
+
+{search_4_type=ehc,goalcount_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{search_3_type=ehc,goalcount_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{search_2_type=ehc,goalcount_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{search_4_type=ehc,lm_heuristic_enabled=true,goalcount_heuristic_enabled=true}
+
+{search_3_type=ehc,lm_heuristic_enabled=true,goalcount_heuristic_enabled=true}
+
+{lm_heuristic_enabled=true,search_2_type=ehc,goalcount_heuristic_enabled=true}
+
+{lm_heuristic_enabled=true,search_1_type=ehc,goalcount_heuristic_enabled=true}
+
+{search_3_type=ehc,lmcut_heuristic_enabled=true,goalcount_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_2_type=ehc,goalcount_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_1_type=ehc,goalcount_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_0_type=ehc,goalcount_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_4_type=ehc,goalcount_heuristic_enabled=true}
+
+{search_3_type=ehc,lmcut_heuristic_enabled=true,ff_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_4_type=ehc,ff_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_1_type=ehc,ff_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_2_type=ehc,ff_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_1_type=ehc,goalcount_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_2_type=ehc,goalcount_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_0_type=ehc,goalcount_heuristic_enabled=true}
+
+{search_0_type=ehc,goalcount_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{search_1_type=ehc,goalcount_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_3_type=ehc,goalcount_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_4_type=ehc,goalcount_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_4_type=ehc}
+
+{hm_heuristic_enabled=true,search_3_type=ehc,lmcut_heuristic_enabled=true}
+
+{search_0_type=ehc,lm_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{lm_heuristic_enabled=true,search_2_type=ehc,hmax_heuristic_enabled=true}
+
+{lm_heuristic_enabled=true,search_1_type=ehc,hmax_heuristic_enabled=true}
+
+{search_4_type=ehc,lm_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{search_3_type=ehc,lm_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_1_type=ehc,hmax_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_0_type=ehc,hmax_heuristic_enabled=true}
+
+{search_3_type=ehc,lmcut_heuristic_enabled=true,hmax_heuristic_enabled=true}
+
+{lmcut_heuristic_enabled=true,search_2_type=ehc,hmax_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,hm_heuristic_m=1,hmax_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_0_type=ehc,hmax_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_1_type=ehc,hmax_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_2_type=ehc,hmax_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_3_type=ehc,hmax_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_4_type=ehc,hmax_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_0_type=ehc,lm_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,lm_heuristic_enabled=true,search_1_type=ehc}
+
+{hm_heuristic_enabled=true,lm_heuristic_enabled=true,search_2_type=ehc}
+
+{hm_heuristic_enabled=true,search_3_type=ehc,lm_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,search_4_type=ehc,lm_heuristic_enabled=true}
+
+{hm_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_0_type=ehc}
+
+{hm_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_1_type=ehc}
+
+{hm_heuristic_enabled=true,lmcut_heuristic_enabled=true,search_2_type=ehc}
+
