@@ -42,3 +42,19 @@ Stage: run
     PLAN_FILE="$4"
 
     pypy /plan.py "$DOMAIN_KNOWLEDGE_FILE" "$DOMAIN_FILE" "$PROBLEM_FILE" "$PLAN_FILE"
+
+%labels
+Name        Fast Downward SMAC 2014
+Description Single Fast Downward configuration, optimized with SMAC for the given training tasks.
+Authors     Jendrik Seipp <jendrik.seipp@liu.se>, Silvan Sievers <silvan.sievers@unibas.ch, Frank Hutter <fh@informatik.uni-freiburg.de>
+License     GPL 3
+Tracks      single-core
+SupportsDerivedPredicates                       yes
+SupportsUniversallyQuantifiedPreconditions      yes
+SupportsExistentiallyQuantifiedPreconditions    yes
+SupportsUniversallyQuantifiedEffects            yes
+SupportsNegativePreconditions                   yes
+SupportsEqualityPreconditions                   yes
+SupportsInequalityPreconditions                 yes
+SupportsConditionalEffects                      yes
+SupportsImplyPreconditions                      yes

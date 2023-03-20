@@ -51,3 +51,19 @@ Stage: run
     /preprocess-tasks.py "$DOMAIN_FILE" "$PROBLEM_FILES"
     /tuning/tuning_exp.py --tuner-timeout 10 --repo /cedalion/ --track sat --response quality --trainingset instances.txt --parameters /parameters/fd-sat.txt --numruns 1 --path tuning-exp 1 2 3 4 5
     mv tuning-exp-eval/configs.py "$DOMAIN_KNOWLEDGE_FILE"
+
+%labels
+Name        Fast Downward SMAC 2014
+Description Single Fast Downward configuration, optimized with SMAC for the given training tasks.
+Authors     Jendrik Seipp <jendrik.seipp@liu.se>, Silvan Sievers <silvan.sievers@unibas.ch, Frank Hutter <fh@informatik.uni-freiburg.de>
+License     GPL 3
+Tracks      single-core
+SupportsDerivedPredicates                       yes
+SupportsUniversallyQuantifiedPreconditions      yes
+SupportsExistentiallyQuantifiedPreconditions    yes
+SupportsUniversallyQuantifiedEffects            yes
+SupportsNegativePreconditions                   yes
+SupportsEqualityPreconditions                   yes
+SupportsInequalityPreconditions                 yes
+SupportsConditionalEffects                      yes
+SupportsImplyPreconditions                      yes
