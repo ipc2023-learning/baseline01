@@ -34,7 +34,7 @@ def main():
     os.mkdir(TRAINING_TASKS_DIR)
     training_set = []
     for problem in args.problem:
-        print(problem)
+        print("Preprocessing", problem)
         time_limit = 24 * 60 * 60 / len(args.problem)
         memory_limit = 7 * 1024
         Call([sys.executable, TRANSLATE, args.domain, problem], time_limit=time_limit, mem_limit=memory_limit).wait()
@@ -52,17 +52,6 @@ def main():
     print("Training set:", training_set)
     with open("instances.txt", "w") as f:
         f.write("\n".join(training_set))
-    #Call([
-    #    sys.executable, TUNING_EXP,
-    #    "--tuner-timeout=20",
-    #    "--repo", CEDALION,
-    #    "--track=sat",
-    #    "--response=quality",
-    #    "--trainingset", "instances.txt",
-    #    "--parameters", PARAMETERS,
-    #    "--numruns=1",
-    #    "--path", "tuning-exp",
-    #    "1", "2", "3", "4", "5"], time_limit=time_limit, mem_limit=memory_limit)
 
 
 if __name__ == "__main__":
