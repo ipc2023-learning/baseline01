@@ -166,7 +166,7 @@ class HgCheckout(Checkout):
         if local_rev == 'WORK':
             global_rev = 'WORK'
             nick = nick or 'WORK'
-            summary = 'WORK ' + get_rev_id(repo)
+            summary = 'working dir'# + get_rev_id(repo)
             dest = repo
         else:
             global_rev = get_global_rev(repo, local_rev)
@@ -189,7 +189,7 @@ class HgCheckout(Checkout):
 
     def checkout(self, compilation_options=None):
         if self.rev == 'WORK':
-            self._compile(compilation_options)
+            #self._compile(compilation_options)
             if self.using_cmake:
                 self._copy_binaries_into_src_dir()
         else:

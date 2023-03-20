@@ -1,0 +1,53 @@
+# Stage 1: Compile the planner
+Bootstrap: docker
+From: ubuntu:14.04
+Stage: build
+
+%files
+    .
+
+%post
+    apt-get update
+    apt-get -y install --no-install-recommends g++ g++-multilib make libboost-dev
+
+    cd cedalion/src
+    ./build_all -j8
+    strip --strip-all search/downward-release
+
+
+# Stage 2: Run the planner
+Bootstrap: docker
+From: ubuntu:14.04
+Stage: run
+
+# Copy planner binary and required files from Stage 1.
+%files from build
+    cedalion/src/preprocess/preprocess
+    cedalion/src/search/downward-release
+    cedalion/src/translate
+    lab
+    preprocess-tasks.py
+    parameters
+    smac
+    tuning
+    wrapper
+
+%post
+    apt-get update
+    apt-get -y install --no-install-recommends default-jre-headless gawk pypy python ruby time
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+
+    export PYTHONPATH=/lab
+
+%runscript
+    #! /bin/bash
+    set -euo pipefail
+    DOMAIN_KNOWLEDGE_FILE="$1"
+    DOMAIN_FILE="$2"
+    shift 2  # Forget first two arguments.
+    PROBLEM_FILES="$@"  # All remaining arguments are problem files.
+
+    /preprocess-tasks.py "$DOMAIN_FILE" "$PROBLEM_FILES"
+    /tuning/tuning_exp.py --tuner-timeout 10 --repo /cedalion/ --track sat --response quality --trainingset instances.txt --parameters /parameters/fd-sat.txt --numruns 1 --path tuning-exp 1 2 3 4 5
+    mv tuning-exp-eval/configs.py "$DOMAIN_KNOWLEDGE_FILE"

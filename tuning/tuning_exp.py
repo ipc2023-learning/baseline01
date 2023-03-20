@@ -5,13 +5,11 @@ import os
 import re
 import shutil
 from subprocess import call
-import sys
 
 from downward.experiment import DownwardExperiment
 from lab.experiment import Experiment, ARGPARSER
 from lab.steps import Step, Sequence
 from lab.environments import MaiaEnvironment, LocalEnvironment
-from lab import tools
 
 from examples import standard_exp
 from downward import suites
@@ -30,9 +28,6 @@ assert os.path.exists(SMAC_BIN), 'SMAC script not found at %s' % SMAC_BIN
 PARAMETERS_DIR = os.path.join(BASE_DIR, 'parameters')
 SUITES_DIR = os.path.join(BASE_DIR, 'suites')
 BENCHMARKS_DIR = os.path.join(BASE_DIR, 'benchmarks')
-
-sys.path.insert(0, BASE_DIR)
-from validation import utils
 
 # Validate with DownwardExperiment.
 if standard_exp.REMOTE:
@@ -59,12 +54,26 @@ checkInstanceFilesExist = true
 
 
 def add_tuning_args_to_parser(parser):
+    parser.add_argument('--portfolio-time', default=1800, type=int,
+                        help='How long the portfolio can run in seconds')
+    parser.add_argument('--tuner-timeout', required=True, type=int,
+                        help='Time in seconds for each tuning round')
+    parser.add_argument('--min-ratio', default=999, type=float,
+                        help='Min improvement/time ratio for configs '
+                             'added *after* first config in each iteration. '
+                             'Set to very high value to only add one config '
+                             'in each iteration.')
+    parser.add_argument('--repo', required=True, help='Path to FD repo')
+    parser.add_argument('--numruns', type=int, default=1, help='Number of parallel SMAC runs')
+    parser.add_argument('--track', choices=['sat', 'opt'], required=True)
+    parser.add_argument('--use-bound', action='store_true', help='Use g-bound during training')
+    parser.add_argument('--response', choices=['coverage', 'quality', 'agile'], required=True)
+    parser.add_argument('--round', type=int, default=1, help='Number of tuning round')
     parser.add_argument('--trainingset', required=True, help='Filename or suite description')
     parser.add_argument('--parameters', required=True, help='Path to SMAC parameter file')
 
 
 def parse_args():
-    utils.add_common_args_to_parser(ARGPARSER)
     add_tuning_args_to_parser(ARGPARSER)
     ARGPARSER.add_argument('--path', required=True, help='Path to where the tuning exp should be built')
     args = ARGPARSER.parse_args()
@@ -134,18 +143,6 @@ class DownwardTuner(DownwardExperiment):
             cmd.append('--use-bound')
         return Step('test-configs', call, cmd + steps,
              cwd=os.path.join(BASE_DIR, 'validation'))
-
-    def is_unsolvable(self, task, task_dir):
-        if task in suites.suite_unsolvable():
-            return True
-        props_file = os.path.join(task_dir, 'properties')
-        if not os.path.exists(props_file):
-            logging.critical('Task %s has not been preprocessed.' % task)
-        props = tools.Properties(props_file)
-        if 'translator_time_finding_invariants' not in props:
-            logging.warning('%s has no relaxed solution' % task)
-            return True
-        return False
 
     def build(self, stage, **kwargs):
         self._checkout_and_compile(stage, **kwargs)
