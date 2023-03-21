@@ -38,8 +38,6 @@ Stage: run
     apt-get clean
     rm -rf /var/lib/apt/lists/*
 
-    export PYTHONPATH=/lab
-
 %runscript
     #! /bin/bash
     set -euo pipefail
@@ -47,6 +45,8 @@ Stage: run
     DOMAIN_FILE="$2"
     shift 2  # Forget first two arguments.
     PROBLEM_FILES="$@"  # All remaining arguments are problem files.
+
+    export PYTHONPATH=/lab
 
     /preprocess-tasks.py "$DOMAIN_FILE" "$PROBLEM_FILES"
     /tuning/tuning_exp.py --tuner-timeout 10 --repo /cedalion/ --track sat --response quality --trainingset instances.txt --parameters /parameters/fd-sat.txt --numruns 1 --path tuning-exp 1 2 3 4 5
