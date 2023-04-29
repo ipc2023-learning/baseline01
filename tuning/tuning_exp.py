@@ -34,8 +34,8 @@ if standard_exp.REMOTE:
     ENV = MaiaEnvironment()
     ROUNDS = 99
 else:
-    ENV = LocalEnvironment(processes=2)
-    ROUNDS = 2
+    ENV = LocalEnvironment(processes=1)
+    ROUNDS = 1
 
 SMAC_MEMORY = 2048
 
@@ -154,12 +154,12 @@ class DownwardTuner(DownwardExperiment):
         Experiment.build(self, **kwargs)
 
     def _get_scenario_text(self):
-        if self.response == 'runtime':
+        if self.response == 'coverage':
             run_obj = 'runtime'
             # Paper says portotune used "mean", repo says "mean10" was used.
             overall_obj = 'mean10'
             cutoff_time = 180
-        elif self.response == 'cost':
+        elif self.response == 'quality':
             run_obj = 'quality'
             # FD-Autotune paper says "mean" was used and SMAC only allows "mean".
             overall_obj = 'mean'
@@ -167,6 +167,7 @@ class DownwardTuner(DownwardExperiment):
             # a cutoff time proportional to our 40h budget.
             cutoff_time = 300
         else:
+            assert self.response == 'agile', self.response
             run_obj = 'quality'
             overall_obj = 'mean'
             cutoff_time = self.portfolio_time + 5
