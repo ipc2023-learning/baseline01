@@ -51,7 +51,7 @@ Stage: run
 
     /preprocess-tasks.py "$DOMAIN_FILE" "${PROBLEM_FILES[@]}"
     # Tun for 23 hours.
-    /tuning/tuning_exp.py --tuner-timeout 82800 --repo /cedalion/ --track sat --response quality --trainingset instances.txt --parameters /parameters/fd-sat.txt --numruns 1 --path tuning-exp 1 2 3 4 5
+    /tuning/tuning_exp.py --tuner-timeout 82800 --repo /cedalion/ --track sat --response runtime --trainingset instances.txt --parameters /parameters/fd-sat.txt --numruns 1 --path tuning-exp 1 2 3 4 5
     mv tuning-exp-eval/configs.py "${DOMAIN_KNOWLEDGE_FILE}".1
 
 %labels
