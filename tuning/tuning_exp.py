@@ -154,12 +154,12 @@ class DownwardTuner(DownwardExperiment):
         Experiment.build(self, **kwargs)
 
     def _get_scenario_text(self):
-        if self.response == 'coverage':
+        if self.response == 'runtime':
             run_obj = 'runtime'
             # Paper says portotune used "mean", repo says "mean10" was used.
             overall_obj = 'mean10'
             cutoff_time = 180
-        elif self.response == 'quality':
+        elif self.response == 'cost':
             run_obj = 'quality'
             # FD-Autotune paper says "mean" was used and SMAC only allows "mean".
             overall_obj = 'mean'
@@ -167,7 +167,6 @@ class DownwardTuner(DownwardExperiment):
             # a cutoff time proportional to our 40h budget.
             cutoff_time = 300
         else:
-            assert self.response == 'agile', self.response
             run_obj = 'quality'
             overall_obj = 'mean'
             cutoff_time = self.portfolio_time + 5
