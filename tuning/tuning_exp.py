@@ -29,6 +29,10 @@ PARAMETERS_DIR = os.path.join(BASE_DIR, 'parameters')
 SUITES_DIR = os.path.join(BASE_DIR, 'suites')
 BENCHMARKS_DIR = os.path.join(BASE_DIR, 'benchmarks')
 
+RESPONSES = ['coverage', 'quality', 'agile']
+RESPONSES += [resp + '-per-logtime' for resp in RESPONSES]
+RESPONSES += ['cost', 'runtime']
+
 # Validate with DownwardExperiment.
 if standard_exp.REMOTE:
     ENV = MaiaEnvironment()
@@ -67,7 +71,7 @@ def add_tuning_args_to_parser(parser):
     parser.add_argument('--numruns', type=int, default=1, help='Number of parallel SMAC runs')
     parser.add_argument('--track', choices=['sat', 'opt'], required=True)
     parser.add_argument('--use-bound', action='store_true', help='Use g-bound during training')
-    parser.add_argument('--response', choices=['coverage', 'quality', 'agile'], required=True)
+    parser.add_argument('--response', choices=RESPONSES, required=True)
     parser.add_argument('--round', type=int, default=1, help='Number of tuning round')
     parser.add_argument('--trainingset', required=True, help='Filename or suite description')
     parser.add_argument('--parameters', required=True, help='Path to SMAC parameter file')
@@ -203,7 +207,7 @@ class DownwardTuner(DownwardExperiment):
         timeout_regex = re.compile(r'timeout \[(\d+), (\d+)\] \[(\d+)\]')
         used_time = self.get_used_time(portfolio)
         remaining_time = self.portfolio_time - used_time
-        if True:  # self.response in ['cost', 'runtime']:
+        if self.response in ['cost', 'runtime']:
             min_timeout = max_timeout = default_timeout = remaining_time
         else:
             match = timeout_regex.search(parameters)
