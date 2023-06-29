@@ -17,7 +17,7 @@ TRANSLATE = os.path.join(CEDALION, "src", "translate", "translate.py")
 PREPROCESS = os.path.join(CEDALION, "src", "preprocess", "preprocess")
 TUNING_EXP = os.path.join(ROOT, "tuning", "tuning_exp.py")
 PARAMETERS = os.path.join(ROOT, "parameters", "fd-sat.txt")
-TRAINING_TASKS_DIR = "/tmp/training-tasks"
+TRAINING_TASKS_DIR = "training-tasks"
 
 
 def parse_args():
