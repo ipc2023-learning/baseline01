@@ -34,8 +34,10 @@ def main():
     os.mkdir(TRAINING_TASKS_DIR)
     training_set = []
     for problem in args.problem:
-        print("Preprocessing", problem)
-        time_limit = 24 * 60 * 60 / len(args.problem)
+        # The Call class redirects stdout and stderr to files, so we need to explicitly request the default output stream.
+        print("Preprocessing", problem, file=sys.__stdout__)
+        # Use at most 30 minutes of CPU time in total for preprocessing all tasks.
+        time_limit = 30 * 60 / len(args.problem)
         memory_limit = 7 * 1024
         Call([sys.executable, TRANSLATE, args.domain, problem], time_limit=time_limit, mem_limit=memory_limit).wait()
         if not os.path.exists("output.sas"):
@@ -49,7 +51,7 @@ def main():
         shutil.move("output", problem_path)
         training_set.append(problem_path)
 
-    print("Training set:", training_set)
+    print("Training set:", training_set, file=sys.__stdout__)
     with open("instances.txt", "w") as f:
         f.write("\n".join(training_set))
 
