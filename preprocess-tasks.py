@@ -1,14 +1,14 @@
 #! /usr/bin/env python
 
-from __future__ import print_function
-
 import argparse
+import logging
 import os
 import os.path
 import shutil
 import sys
 
 from lab.calls.call import Call
+from lab import tools  # Set up logging.
 
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -29,19 +29,24 @@ def parse_args():
 
 def main():
     args = parse_args()
+
+    # Use at most 30 minutes of CPU time in total for preprocessing all tasks.
+    time_limit = int(30 * 60 / len(args.problem))
+    memory_limit = 7 * 1024
+    logging.info("Using at most %d seconds and %d MiB to preprocess each task." % (time_limit, memory_limit))
+
     if os.path.exists(TRAINING_TASKS_DIR):
         shutil.rmtree(TRAINING_TASKS_DIR)
     os.mkdir(TRAINING_TASKS_DIR)
+
     training_set = []
     for problem in args.problem:
-        # The Call class redirects stdout and stderr to files, so we need to explicitly request the default output stream.
-        print("Preprocessing", problem, file=sys.__stdout__)
-        # Use at most 30 minutes of CPU time in total for preprocessing all tasks.
-        time_limit = 30 * 60 / len(args.problem)
-        memory_limit = 7 * 1024
+        logging.info("Preprocessing %s" % problem)
+
         Call([sys.executable, TRANSLATE, args.domain, problem], time_limit=time_limit, mem_limit=memory_limit).wait()
         if not os.path.exists("output.sas"):
             continue
+
         Call([PREPROCESS], stdin="output.sas", time_limit=time_limit, mem_limit=memory_limit).wait()
         if not os.path.exists("output"):
             continue
@@ -51,7 +56,7 @@ def main():
         shutil.move("output", problem_path)
         training_set.append(problem_path)
 
-    print("Training set:", training_set, file=sys.__stdout__)
+    logging.info("Training set:", training_set)
     with open("instances.txt", "w") as f:
         f.write("\n".join(training_set))
 
