@@ -17,7 +17,7 @@ TRANSLATE = os.path.join(CEDALION, "src", "translate", "translate.py")
 PREPROCESS = os.path.join(CEDALION, "src", "preprocess", "preprocess")
 TUNING_EXP = os.path.join(ROOT, "tuning", "tuning_exp.py")
 PARAMETERS = os.path.join(ROOT, "parameters", "fd-sat.txt")
-TRAINING_TASKS_DIR = "training-tasks"
+TRAINING_TASKS_DIR = os.path.abspath("training-tasks")
 
 
 def parse_args():
@@ -56,7 +56,7 @@ def main():
         shutil.move("output", problem_path)
         training_set.append(problem_path)
 
-    logging.info("Training set:", training_set)
+    logging.info("Tasks in training set: %d" % len(training_set))
     with open("instances.txt", "w") as f:
         f.write("\n".join(training_set))
 

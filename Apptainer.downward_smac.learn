@@ -49,8 +49,8 @@ Stage: run
 
     export PYTHONPATH=/lab
 
-    # Run for 30 minutes.
-    time /preprocess-tasks.py "$DOMAIN_FILE" "${PROBLEM_FILES[@]}"
+    # Run for at most 30 minutes.
+    /preprocess-tasks.py "$DOMAIN_FILE" "${PROBLEM_FILES[@]}"
     # Run for 23 hours.
     /tuning/tuning_exp.py --tuner-timeout 82800 --repo /cedalion/ --track sat --response runtime --trainingset instances.txt --parameters /parameters/fd-sat.txt --numruns 1 --path tuning-exp 1 2 3 4 5
     mv tuning-exp-eval/configs.py "${DOMAIN_KNOWLEDGE_FILE}".1
