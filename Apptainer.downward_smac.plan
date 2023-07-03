@@ -46,7 +46,7 @@ Stage: run
 %labels
 Name        Fast Downward SMAC 2014
 Description Single Fast Downward configuration, optimized with SMAC for the given training tasks.
-Authors     Jendrik Seipp <jendrik.seipp@liu.se>, Silvan Sievers <silvan.sievers@unibas.ch, Frank Hutter <fh@informatik.uni-freiburg.de>
+Authors     Jendrik Seipp <jendrik.seipp@liu.se>, Silvan Sievers <silvan.sievers@unibas.ch>, Frank Hutter <fh@informatik.uni-freiburg.de>
 License     GPL 3
 Tracks      single-core
 SupportsDerivedPredicates                       yes
